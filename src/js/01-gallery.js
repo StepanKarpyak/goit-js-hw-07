@@ -44,19 +44,19 @@ import { galleryItems } from './gallery-items.js';
 //     }).show();
 // }
 
-const gallery = document.querySelector('.gallery');
+const galleryContainer = document.querySelector('.gallery');
 const createMarkup = images => {
     return images
         .map(({ preview, original, description }) => {
             return `<div class="gallery__item">
-  <a class="gallery__link" href="${original}">
+    <a class="gallery__link" href="${original}">
     <img
-      class="gallery__image"
-      src="${preview}"
-      data-source="${original}"
-      alt="${description}"
+        class="gallery__image"
+        src="${preview}"
+        data-source="${original}"
+        alt="${description}"
     />
-  </a>
+    </a>
 </div>
     `;
         })
@@ -64,7 +64,7 @@ const createMarkup = images => {
 };
 const markup = createMarkup(galleryItems);
 const addMarkup = markup => {
-    gallery.insertAdjacentHTML('beforeend', markup);
+    galleryContainer.insertAdjacentHTML('beforeend', markup);
 };
 addMarkup(markup);
 
@@ -85,5 +85,5 @@ const onClick = e => {
     }
 };
 
-gallery.addEventListener('click', onClick);
+galleryContainer.addEventListener('click', onClick);
 document.addEventListener('keydown', onPress);
